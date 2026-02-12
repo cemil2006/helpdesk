@@ -7,6 +7,7 @@ Route::get('/', function () {
     return view('welcome');
 });
     Route::get('categories/index', [CategoryController::class, 'index'])->name('categories.index');
+    Route::get('categories/show/{category}', [CategoryController::class, 'show'])->name('categories.show');
     Route::get('categories/create', [CategoryController::class, 'create'])->name('categories.create');
     Route::get('categories/store', [CategoryController::class, 'store'])->name('categories.store');
     Route::get('categories/edit', [CategoryController::class, 'edit'])->name('categories.edit');
@@ -19,3 +20,4 @@ Route::get('/', function () {
     Route::get('tickets/edit', [TicketController::class, 'edit'])->name('tickets.edit');
     Route::get('tickets/update', [TicketController::class, 'update'])->name('tickets.update');
     Route::get('tickets/delet', [TicketController::class, 'delete'])->name('tickets.delete');
+
