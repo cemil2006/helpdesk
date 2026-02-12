@@ -16,15 +16,16 @@
             @csrf
 
             <div style="margin-bottom:8px">
-                <label>Naam</label><br>
-                <input type="text" name="name" value="{{ old('name') }}" required style="width:100%;padding:8px">
-                @error('name')<div style="color:#c00">{{ $message }}</div>@enderror
+                <div style="margin: 15px 0;">
+                    <label for="name">Naam:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
             </div>
 
             <div style="margin-bottom:8px">
-                <label>Beschrijving</label><br>
-                <textarea name="description" rows="4" style="width:100%;padding:8px">{{ old('description') }}</textarea>
-                @error('description')<div style="color:#c00">{{ $message }}</div>@enderror
+                <label for="description">Beschrijving:</label>
+                <textarea id="description" name="description" required></textarea>
             </div>
 
             <div>
