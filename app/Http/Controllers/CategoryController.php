@@ -30,7 +30,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category();
+        $category->name = $request->name;
+        $category->description = $request->name;
     }
 
     /**
