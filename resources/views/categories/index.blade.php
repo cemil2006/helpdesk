@@ -38,7 +38,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($categories as $category)
+                @forelse($categories as $category)
                 <tr>
                     <td>{{ $category->name }}</td>
                     <td>{{ Str::limit($category->description ?? '-', 80) }}</td>
@@ -54,13 +54,14 @@
                         </form>
                     </td>
                 </tr>
-                @endforeach
-
-
+                @empty
                 <tr>
                     <td colspan="3">Geen categorieën gevonden.</td>
                 </tr>
-                @empty
+                @endforelse
+
+                
+
             </tbody>
         </table>
     </div>
