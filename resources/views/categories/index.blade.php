@@ -43,9 +43,9 @@
                     <td>{{ $category->name }}</td>
                     <td>{{ Str::limit($category->description ?? '-', 80) }}</td>
                     <td>
-                        <a href="{{ route('categories.show', $category) }}">Bekijken</a>
+                        <a href="{{ route('categories.show', $category->id) }}">Bekijken</a>
                         |
-                        <a href="{{ route('categories.edit', $category) }}">Bewerken</a>
+                        <a href="{{ route('categories.edit', $category->id) }}">Bewerken</a>
                         |
                         <form action="{{ route('categories.destroy', $category) }}" method="POST" style="display:inline">
                             @csrf
