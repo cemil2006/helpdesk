@@ -22,7 +22,8 @@ class TicketController extends Controller
      */
     public function create()
     {
-        
+        $tickets = Ticket::all();
+        return view('tickets.create', compact('tickets'))
     }
 
     /**
@@ -30,7 +31,9 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ticket->$title=$request->$title;
+        $ticket->$description=$request->$description;
+        $ticket->$priority=$request->$priority;
     }
 
     /**
@@ -38,7 +41,7 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        
+        return view()
     }
 
     /**
