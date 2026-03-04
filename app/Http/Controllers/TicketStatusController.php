@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TicketStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class TicketStatusController extends Controller
 {
@@ -12,7 +13,8 @@ class TicketStatusController extends Controller
      */
     public function index()
     {
-        //
+        $statuses = TicketStatus::all();
+        return view('status.index', compact('statuses'));
     }
 
     /**
@@ -20,7 +22,8 @@ class TicketStatusController extends Controller
      */
     public function create()
     {
-        //
+        $statuses = TicketStatus::all();
+        return view('status.creaye', compact('statuses'));
     }
 
     /**
@@ -28,31 +31,36 @@ class TicketStatusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $statuses = new  TicketStatus();
+        $statuses->state = $request->state;
+        $statuses->save();
+
+        return redirect('categories/index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(TicketStatus $ticketStatus)
+    public function show(TicketStatus $statuses)
     {
-        //
+        return view('statuses.show', compact('statuses'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TicketStatus $ticketStatus)
+    public function edit(TicketStatus $statuses)
     {
-        //
+        return view('statuses.edit', compact('statuses'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TicketStatus $ticketStatus)
+    public function update(Request $request, TicketStatus $status)
     {
-        //
+        $status->state = $request->state;
+        $status->save();
     }
 
     /**
@@ -60,6 +68,7 @@ class TicketStatusController extends Controller
      */
     public function destroy(TicketStatus $ticketStatus)
     {
-        //
+        $ticketStatus->delete();
+        return Redirect('index/ticketstatuses')
     }
 }

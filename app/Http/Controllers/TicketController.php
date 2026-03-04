@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
+use App\Models\TicketStatus;
 use Illuminate\Http\Request;
 
 class TicketController extends Controller
@@ -21,7 +22,7 @@ class TicketController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -37,7 +38,7 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        //
+        
     }
 
     /**

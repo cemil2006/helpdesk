@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryUpdateRequest extends FormRequest
+class TicketStatusUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,8 +22,7 @@ class CategoryUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'requierd',
-            'description' => 'required',
+        'state' => 'required',
         ];
     }
 }
