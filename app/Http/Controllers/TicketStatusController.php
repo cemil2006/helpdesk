@@ -43,11 +43,7 @@ class TicketStatusController extends Controller
      */
     public function show(TicketStatus $status)
     {
-<<<<<<< HEAD
         return view('ticketstatuses.show', compact('statuses'));
-=======
-        return view('ticketstatuses.show', compact('status'));
->>>>>>> 87ec498e675e9beefc61b5363f6b81f7c4fcafe7
     }
 
     /**
@@ -55,11 +51,7 @@ class TicketStatusController extends Controller
      */
     public function edit(TicketStatus $status)
     {
-<<<<<<< HEAD
         return view('ticketstatuses.edit', compact('statuses'));
-=======
-        return view('ticketstatuses.edit', compact('status'));
->>>>>>> 87ec498e675e9beefc61b5363f6b81f7c4fcafe7
     }
 
     /**
