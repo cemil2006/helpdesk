@@ -14,7 +14,7 @@ class TicketStatusController extends Controller
     public function index()
     {
         $statuses = TicketStatus::all();
-        return view('status.index', compact('statuses'));
+        return view('ticketstatuses.index', compact('statuses'));
     }
 
     /**
@@ -23,7 +23,7 @@ class TicketStatusController extends Controller
     public function create()
     {
         $statuses = TicketStatus::all();
-        return view('status.creaye', compact('statuses'));
+        return view('ticketstatuses.create', compact('statuses'));
     }
 
     /**
@@ -35,7 +35,7 @@ class TicketStatusController extends Controller
         $statuses->state = $request->state;
         $statuses->save();
 
-        return redirect('categories/index');
+        return redirect('ticketstatuses/index');
     }
 
     /**
@@ -43,7 +43,7 @@ class TicketStatusController extends Controller
      */
     public function show(TicketStatus $statuses)
     {
-        return view('statuses.show', compact('statuses'));
+        return view('ticketstatuses.show', compact('statuses'));
     }
 
     /**
@@ -51,7 +51,7 @@ class TicketStatusController extends Controller
      */
     public function edit(TicketStatus $statuses)
     {
-        return view('statuses.edit', compact('statuses'));
+        return view('ticketstatuses.edit', compact('statuses'));
     }
 
     /**
@@ -69,6 +69,6 @@ class TicketStatusController extends Controller
     public function destroy(TicketStatus $ticketStatus)
     {
         $ticketStatus->delete();
-        return Redirect('index/ticketstatuses')
+        return Redirect('ticketstatuses/index');
     }
 }
