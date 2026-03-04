@@ -31,33 +31,40 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
+        $ticket = new Ticket;
         $ticket->$title=$request->$title;
         $ticket->$description=$request->$description;
         $ticket->$priority=$request->$priority;
+        ticket->save();
+        return redirect('tickets.index');
     }
+
 
     /**
      * Display the specified resource.
      */
     public function show(Ticket $ticket)
     {
-        return view()
+        return view('tickets.show', compact('ticket'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
+        
+        /**
+         * Show the form for editing the specified resource.
+        */
     public function edit(Ticket $ticket)
     {
-        //
+        return view('tickets.edit', compact('ticket'));
     }
-
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Ticket $ticket)
     {
-        //
+        $ticket->$title=$request->$title;
+        $ticket->$description=$request->$description;
+        $ticket->$priority=$request->$priority;
+        ticket->save();
+        return redirect('tickets.index');
     }
 
     /**
@@ -65,6 +72,7 @@ class TicketController extends Controller
      */
     public function destroy(Ticket $ticket)
     {
-        //
+        $ticket->destroy();
+        return redirect('ticket.index');
     }
 }
