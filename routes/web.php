@@ -3,6 +3,9 @@
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TicketController; 
+use App\Http\Controllers\TicketStatusController;
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,4 +24,8 @@ Route::get('/', function () {
     Route::put('tickets/update/{ticket}', [TicketController::class, 'update'])->name('tickets.update');
     Route::delete('tickets/destroy/{ticket}', [TicketController::class, 'destroy'])->name('tickets.destroy');
 
+    Route::get('ticket-statuses/index', [TicketStatusController::class, 'index'])->name('ticket-statuses.index');
+    Route::get('ticket-statuses/create', [TicketStatusController::class, 'create'])->name('ticket-statuses.create');
+    Route::get('ticket-statuses/edit/{ticketStatus}', [TicketStatusController::class, 'edit'])->name('ticket-statuses.edit');
+    Route::post('ticket-statuses/store', [TicketStatusController::class, 'store'])->name('ticket-statuses.store');
     
