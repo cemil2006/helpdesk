@@ -23,7 +23,7 @@ class TicketController extends Controller
     public function create()
     {
         $tickets = Ticket::all();
-        return view('tickets.create', compact('tickets'))
+        return view('tickets.create', compact('tickets'));
     }
 
     /**
@@ -32,10 +32,10 @@ class TicketController extends Controller
     public function store(Request $request)
     {
         $ticket = new Ticket;
-        $ticket->$title=$request->$title;
-        $ticket->$description=$request->$description;
-        $ticket->$priority=$request->$priority;
-        ticket->save();
+        $ticket->title=$request->title;
+        $ticket->description=$request->description;
+        $ticket->priority=$request->priority;
+        $ticket->save();
         return redirect('tickets.index');
     }
 
@@ -60,10 +60,10 @@ class TicketController extends Controller
      */
     public function update(Request $request, Ticket $ticket)
     {
-        $ticket->$title=$request->$title;
-        $ticket->$description=$request->$description;
-        $ticket->$priority=$request->$priority;
-        ticket->save();
+        $ticket->title=$request->title;
+        $ticket->description=$request->description;
+        $ticket->priority=$request->priority;
+        $ticket->save();
         return redirect('tickets.index');
     }
 
@@ -72,7 +72,7 @@ class TicketController extends Controller
      */
     public function destroy(Ticket $ticket)
     {
-        $ticket->destroy();
+        $ticket->delete();
         return redirect('ticket.index');
     }
 }

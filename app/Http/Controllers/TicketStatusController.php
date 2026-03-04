@@ -69,6 +69,6 @@ class TicketStatusController extends Controller
     public function destroy(TicketStatus $ticketStatus)
     {
         $ticketStatus->delete();
-        return Redirect('ticketstatuses/index')
+        return Redirect('ticketstatuses/index');
     }
 }
