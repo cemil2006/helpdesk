@@ -31,9 +31,9 @@ class TicketStatusController extends Controller
      */
     public function store(Request $request)
     {
-        $statuses = new  TicketStatus();
-        $statuses->state = $request->state;
-        $statuses->save();
+        $status = new  TicketStatus();
+        $status->state = $request->state;
+        $status->save();
 
         return redirect('ticketstatuses/index');
     }
@@ -41,17 +41,25 @@ class TicketStatusController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TicketStatus $statuses)
+    public function show(TicketStatus $status)
     {
+<<<<<<< HEAD
         return view('ticketstatuses.show', compact('statuses'));
+=======
+        return view('ticketstatuses.show', compact('status'));
+>>>>>>> 87ec498e675e9beefc61b5363f6b81f7c4fcafe7
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TicketStatus $statuses)
+    public function edit(TicketStatus $status)
     {
+<<<<<<< HEAD
         return view('ticketstatuses.edit', compact('statuses'));
+=======
+        return view('ticketstatuses.edit', compact('status'));
+>>>>>>> 87ec498e675e9beefc61b5363f6b81f7c4fcafe7
     }
 
     /**
