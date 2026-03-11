@@ -13,8 +13,8 @@ class TicketStatusController extends Controller
      */
     public function index()
     {
-        $statuses = TicketStatus::all();
-        return view('ticketstatuses.index', compact('statuses'));
+        $ticketstatuses  = TicketStatus::all();
+        return view('ticketstatuses.index', compact('ticketstatuses'));
     }
 
     /**
@@ -22,8 +22,8 @@ class TicketStatusController extends Controller
      */
     public function create()
     {
-        $statuses = TicketStatus::all();
-        return view('ticketstatuses.create', compact('statuses'));
+        $ticketstatuses  = TicketStatus::all();
+        return view('ticketstatuses.create', compact('ticketstatuses'));
     }
 
     /**
@@ -31,11 +31,11 @@ class TicketStatusController extends Controller
      */
     public function store(Request $request)
     {
-        $status = new  TicketStatus();
-        $status->state = $request->state;
-        $status->save();
+        $ticketstatuses  = new  TicketStatus();
+        $ticketstatuses ->state = $request->state;
+        $ticketstatuses ->save();
 
-        return redirect('ticketstatuses/index');
+        return redirect('ticket-statuses/index');
     }
 
     /**
@@ -43,7 +43,7 @@ class TicketStatusController extends Controller
      */
     public function show(TicketStatus $status)
     {
-        return view('ticketstatuses.show', compact('statuses'));
+        return view('ticketstatuses.show', compact('status'));
     }
 
     /**
@@ -51,7 +51,7 @@ class TicketStatusController extends Controller
      */
     public function edit(TicketStatus $status)
     {
-        return view('ticketstatuses.edit', compact('statuses'));
+        return view('ticketstatuses.edit', compact('status'));
     }
 
     /**
@@ -61,14 +61,15 @@ class TicketStatusController extends Controller
     {
         $status->state = $request->state;
         $status->save();
+        return Redirect('ticket-statuses/index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TicketStatus $ticketStatus)
+    public function destroy(TicketStatus $status)
     {
-        $ticketStatus->delete();
-        return Redirect('ticketstatuses/index');
+        $status->delete();
+        return Redirect('ticket-statuses/index');
     }
 }
