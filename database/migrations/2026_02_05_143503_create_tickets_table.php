@@ -16,6 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('title')->nullable();
             $table->text('description')->nullable();
+            $table->foreignId('ticket_status_id')->constrained()->onDelete('cascade');
             $table->string("priority")->nullable();
         }
         );

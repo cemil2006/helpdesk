@@ -18,6 +18,7 @@ Route::put('categories/update/{category}', [CategoryController::class, 'update']
 Route::delete('categories/destroy/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
 Route::get('tickets/index', [TicketController::class, 'index'])->name('tickets.index');
+Route::get('tickets/show/{ticket}', [TicketController::class, 'show'])->name('tickets.show');
 Route::get('tickets/create', [TicketController::class, 'create'])->name('tickets.create');
 Route::post('tickets/store', [TicketController::class, 'store'])->name('tickets.store');
 Route::get('tickets/edit/{ticket}', [TicketController::class, 'edit'])->name('tickets.edit');
@@ -25,7 +26,7 @@ Route::put('tickets/update/{ticket}', [TicketController::class, 'update'])->name
 Route::delete('tickets/destroy/{ticket}', [TicketController::class, 'destroy'])->name('tickets.destroy');
 
 Route::get('ticket-statuses/index', [TicketStatusController::class, 'index'])->name('ticket-statuses.index');
-Route::get('ticket-statuses/show/{ticket}', [TicketStatusController::class, 'show'])->name('ticket-statuses.show');
+Route::get('ticket-statuses/show/{status}', [TicketStatusController::class, 'show'])->name('ticket-statuses.show');
 Route::get('ticket-statuses/create', [TicketStatusController::class, 'create'])->name('ticket-statuses.create');
 Route::post('ticket-statuses/store', [TicketStatusController::class, 'store'])->name('ticket-statuses.store');
 Route::get('ticket-statuses/edit/{status}', [TicketStatusController::class, 'edit'])->name('ticket-statuses.edit');

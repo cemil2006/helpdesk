@@ -22,8 +22,9 @@ class TicketController extends Controller
      */
     public function create()
     {
+        $ticketstatuses = TicketStatus::all();
         $tickets = Ticket::all();
-        return view('tickets.create', compact('tickets'));
+        return view('tickets.create', compact('tickets', 'ticketstatuses'));
     }
 
     /**
@@ -32,11 +33,12 @@ class TicketController extends Controller
     public function store(Request $request)
     {
         $ticket = new Ticket;
-        $ticket->title=$request->title;
-        $ticket->description=$request->description;
-        $ticket->priority=$request->priority;
+        $ticket->title = $request->title;
+        $ticket->description = $request->description;
+        $ticket->priority = $request->priority;
+        $ticket->ticket_status_id = $request->ticket_status_id;
         $ticket->save();
-        return redirect('tickets.index');
+        return redirect('tickets/index');
     }
 
 
@@ -53,18 +55,22 @@ class TicketController extends Controller
         */
     public function edit(Ticket $ticket)
     {
-        return view('tickets.edit', compact('ticket'));
+        $ticketstatuses = TicketStatus::all();
+
+        return view('tickets.edit', compact('ticket', 'ticketstatuses'));
     }
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Ticket $ticket)
     {
-        $ticket->title=$request->title;
-        $ticket->description=$request->description;
-        $ticket->priority=$request->priority;
+        $ticket->title = $request->title;
+        $ticket->description = $request->description;
+        $ticket->priority = $request->priority;
+        $ticket->ticket_status_id = $request->ticket_status_id;
         $ticket->save();
-        return redirect('tickets.index');
+
+        return redirect('tickets/index');
     }
 
     /**
@@ -73,6 +79,6 @@ class TicketController extends Controller
     public function destroy(Ticket $ticket)
     {
         $ticket->delete();
-        return redirect('ticket.index');
+        return redirect('tickets/index');
     }
 }

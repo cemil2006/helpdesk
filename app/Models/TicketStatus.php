@@ -1,13 +1,16 @@
 <?php
 
 namespace App\Models;
-use App\Models\Ticket;
+
 use Illuminate\Database\Eloquent\Model;
 
 class TicketStatus extends Model
 {
-    public function Ticket()
+    /**
+     * Tickets that have this status.
+     */
+    public function tickets()
     {
-        return $this -> belongsTo(Ticket::class);
+        return $this->hasMany(Ticket::class, 'ticket_status_id');
     }
 }

@@ -1,26 +1,32 @@
 <?php
 
 namespace App\Models;
-use App\Models\Category;
-use App\Models\User;
-use App\Models\TicketStatus;
-use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Category;
+use App\Models\TicketStatus;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
 {
     public function User()
     {
-        return $this -> belongsToMany(User::class, 'tickets_users');
+        return $this->belongsToMany(User::class, 'tickets_users');
     }
 
-    public function Category()
+    /**
+     * Category the ticket belongs to.
+     */
+    public function category()
     {
-     return $this -> hasMany(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
-    public function TicketStatus()
+    /**
+     * Status of the ticket.
+     */
+    public function status()
     {
-        return $this -> has(TicketStatus::class);
+        return $this->belongsTo(TicketStatus::class, 'ticket_status_id');
     }
 }

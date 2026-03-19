@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Ticket;
+use App\Models\TicketStatus;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,22 +16,29 @@ class TicketSeeder extends Seeder
      */
     public function run(): void
     {
+        $statusNew = TicketStatus::firstOrCreate(['state' => 'Bekeken']);
+        $statusInProgress = TicketStatus::firstOrCreate(['state' => 'In behandeling']);
+        $statusDone = TicketStatus::firstOrCreate(['state' => 'Afgerond']);
+
         Ticket::create([
             'title' => 'Printer not working',
             'description' => 'The printer in the office is not responding to print jobs. Please investigate.',
             'priority' => 'high',
+            'ticket_status_id' => $statusNew->id,
         ]);
 
         Ticket::create([
             'title' => 'Update software licenses',
             'description' => 'Need to renew the annual licenses for Microsoft Office suite.',
             'priority' => 'medium',
+            'ticket_status_id' => $statusInProgress->id,
         ]);
 
         Ticket::create([
             'title' => 'Password reset required',
             'description' => 'Employee forgot their password and cannot access the company portal.',
             'priority' => 'low',
+            'ticket_status_id' => $statusDone->id,
         ]);
     }
 }
