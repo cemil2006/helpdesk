@@ -39,13 +39,24 @@
                             @enderror
                         </div>
 
+
+                        <div style="margin: 15px 0;">
+                            <label for="Category">Categorie</label>
+                            @foreach($categories as $category)
+                            <div>
+                                <input type="checkbox" name="categories[]" value="{{ $category->id }}">
+                                <label>{{ $category->name }}</label>
+                            </div>
+                            @endforeach
+                        </div>
+
                         <div class="mb-3">
                             <label for="ticket_status_id" class="form-label">Status</label>
                             <select class="form-control @error('ticket_status_id') is-invalid @enderror"
                                 id="ticket_status_id" name="ticket_status_id" required>
-                                <option value="" {{ old('ticket_status_id', $defaultStatusId) ? '' : 'selected' }} disabled>Selecteer status</option>
+                                <option value="">Selecteer status</option>
                                 @foreach($ticketstatuses as $status)
-                                <option value="{{ $status->id }}" {{ old('ticket_status_id', $defaultStatusId) == $status->id ? 'selected' : '' }}>{{ $status->state }}</option>
+                                <option value="{{ $status->id }}" {{ old('ticket_status_id') == $status->id ? 'selected' : '' }}>{{ $status->state }}</option>
                                 @endforeach
                             </select>
                             @error('ticket_status_id')

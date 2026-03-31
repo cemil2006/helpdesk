@@ -8,6 +8,6 @@ class Category extends Model
 {
     public function Ticket()
     {
-        return $this -> belongsTo(Ticket::class);
+        return $this -> belongsToMany(Ticket::class, 'tickets_categories');
     }
 }

@@ -27,6 +27,17 @@
                     </div>
 
                     <div class="form-group mb-3">
+                        <label><strong>Categorieën:</strong></label>
+                        <p>
+                            @forelse($ticket->categories as $category)
+                            <span class="badge bg-info">{{ $category->name }}</span>
+                            @empty
+                            <span class="text-muted">—</span>
+                            @endforelse
+                        </p>
+                    </div>
+
+                    <div class="form-group mb-3">
                         <label><strong>Aangemaakt op:</strong></label>
                         <p>{{ $ticket->created_at->format('d-m-Y H:i') }}</p>
                     </div>

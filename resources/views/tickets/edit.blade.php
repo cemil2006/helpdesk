@@ -46,12 +46,23 @@
                                 id="ticket_status_id" name="ticket_status_id" required>
                                 <option value="">Selecteer status</option>
                                 @foreach($ticketstatuses as $status)
-                                    <option value="{{ $status->id }}" {{ old('ticket_status_id', $ticket->ticket_status_id) == $status->id ? 'selected' : '' }}>{{ $status->state }}</option>
+                                <option value="{{ $status->id }}" {{ old('ticket_status_id', $ticket->ticket_status_id) == $status->id ? 'selected' : '' }}>{{ $status->state }}</option>
                                 @endforeach
                             </select>
                             @error('ticket_status_id')
                             <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
+                        </div>
+
+                        <div style="margin: 15px 0;">
+                            <label for="Categories">Categorieën</label>
+                            @foreach($categories as $category)
+                            <div>
+                                <input type="checkbox" name="categories[]" value="{{ $category->id }}"
+                                    @if($ticket->categories->contains($category->id)) checked @endif>
+                                <label>{{ $category->name }}</label>
+                            </div>
+                            @endforeach
                         </div>
 
                         <button type="submit" class="btn btn-primary">Ticket Bijwerken</button>
