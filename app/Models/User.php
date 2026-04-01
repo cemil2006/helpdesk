@@ -11,7 +11,7 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
 
-    public function Ticket()
+    public function tickets()
     {
         return $this->belongsToMany(Ticket::class, 'tickets_users');
     }

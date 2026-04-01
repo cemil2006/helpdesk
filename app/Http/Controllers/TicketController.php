@@ -41,7 +41,7 @@ class TicketController extends Controller
      */
     public function myTickets(Request $request)
     {
-        $query = Auth::user()->Ticket();
+        $query = Auth::user()->tickets();
 
         // Filter op categorie
         if ($request->filled('category_id')) {
