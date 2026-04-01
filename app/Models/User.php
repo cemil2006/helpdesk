@@ -13,7 +13,7 @@ class User extends Authenticatable
 
     public function Ticket()
     {
-        return $this -> belongsToMany(Ticket::class, 'tickets_users');
+        return $this->belongsToMany(Ticket::class, 'tickets_users');
     }
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -27,6 +27,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**

@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Ticket;
 use App\Models\TicketStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
@@ -36,6 +37,26 @@ class TicketController extends Controller
     }
 
     /**
+     * Display a listing of the current user's tickets.
+     */
+    public function myTickets(Request $request)
+    {
+        $query = Auth::user()->Ticket();
+
+        // Filter op categorie
+        if ($request->filled('category_id')) {
+            $query->whereHas('categories', function ($q) use ($request) {
+                $q->where('category_id', $request->category_id);
+            });
+        }
+
+        $tickets = $query->get();
+        $categories = Category::all();
+
+        return view('tickets.my-tickets', compact('tickets', 'categories'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -51,6 +72,10 @@ class TicketController extends Controller
      */
     public function store(TicketStoreRequest $request)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Je moet ingelogd zijn om een ticket aan te maken.');
+        }
+
         $ticket = new Ticket;
         $ticket->title = $request->title;
         $ticket->description = $request->description;
@@ -59,6 +84,7 @@ class TicketController extends Controller
         $ticket->save();
 
         $ticket->categories()->sync($request->categories);
+        $ticket->users()->attach(Auth::id());
         return redirect('tickets/index');
     }
 

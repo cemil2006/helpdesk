@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
 {
-    public function User()
+    public function users()
     {
         return $this->belongsToMany(User::class, 'tickets_users');
     }
