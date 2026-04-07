@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Categorieën</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
         table {
             width: 100%;
@@ -60,7 +61,7 @@
                 </tr>
                 @endforelse
 
-                
+
 
             </tbody>
         </table>

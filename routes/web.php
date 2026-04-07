@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TicketStatusController;
 use App\Http\Controllers\UserController;
@@ -11,9 +14,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware('auth')->group(function () {
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+
+Route::middleware('guest')->group(function () {
     Route::get('login', [UserController::class, 'showLoginForm'])->name('login');
     Route::post('login', [UserController::class, 'login']);
+});
+
+Route::middleware('auth')->group(function () {
     Route::post('logout', [UserController::class, 'logout'])->name('logout');
 
     Route::get('users/index', [UserController::class, 'index'])->name('users.index');
